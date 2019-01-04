@@ -1,6 +1,5 @@
 package com.example.yt.studentsmanagementsystem;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -12,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +28,7 @@ import android.widget.Toast;
 
 import com.example.asus.student.R;
 
-import StudentDBHelper.StudentDBHelper;
+import StudentDBHelper.StudentDBHepler;
 import Student.Student;
 //import AddStudentActivity;
 import TableContanst.TableContanst;
@@ -62,7 +60,7 @@ public class StudentListActivity extends ListActivity implements
         Log.e(TAG, "onCreate");
         list = new ArrayList<Long>();
         student = new Student();
-        dao = new StudentDao(new StudentDBHelper(this));
+        dao = new StudentDao(new StudentDBHepler(this));
         addStudent = (Button) findViewById(R.id.btn_add_student);
         searchButton = (Button) findViewById(R.id.bn_search_id);
         selectButton = (Button) findViewById(R.id.bn_select);
@@ -204,7 +202,7 @@ public class StudentListActivity extends ListActivity implements
 
     // 自定义一个加载数据库中的全部记录到当前页面的无参方法
     public void load() {
-        StudentDBHelper studentDBHelper = new StudentDBHelper(
+        StudentDBHepler studentDBHelper = new StudentDBHepler(
                 StudentListActivity.this);
         SQLiteDatabase database = studentDBHelper.getWritableDatabase();
         cursor = database.query(TableContanst.STUDENT_TABLE, null, null, null,

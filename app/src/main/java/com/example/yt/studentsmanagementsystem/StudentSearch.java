@@ -1,9 +1,8 @@
 package com.example.yt.studentsmanagementsystem;
 
-import StudentDBHelper.StudentDBHelper;
+import StudentDBHelper.StudentDBHepler;
 import TableContanst.TableContanst;
 import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -38,7 +37,7 @@ public class StudentSearch extends Activity implements OnClickListener {
         reButton = (Button) findViewById(R.id.bn_return);
         listView = (ListView) findViewById(R.id.searchListView);
         returnButton = (Button) findViewById(R.id.return_id);
-        dao = new StudentDao(new StudentDBHelper(this));
+        dao = new StudentDao(new StudentDBHepler(this));
 
 
         reButton.setOnClickListener(this);

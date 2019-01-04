@@ -1,6 +1,6 @@
 package com.example.yt.studentsmanagementsystem;
 
-import StudentDBHelper.StudentDBHelper;
+import StudentDBHelper.StudentDBHepler;
 import TableContanst.TableContanst;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,18 +8,16 @@ import java.util.List;
 import java.util.Map;
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import com.example.asus.student.R;
 
 import Student.Student;
 public class StudentDao {
-    private StudentDBHelper dbHelper;
+    private StudentDBHepler dbHelper;
     private Cursor cursor;
-    public StudentDao(StudentDBHelper dbHelper) {
+    public StudentDao(StudentDBHepler dbHelper) {
         this.dbHelper = dbHelper;
     }
     // 添加一个Student对象数据到数据库表

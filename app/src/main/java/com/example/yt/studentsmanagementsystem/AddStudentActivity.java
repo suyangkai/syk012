@@ -2,22 +2,17 @@ package com.example.yt.studentsmanagementsystem;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -27,7 +22,7 @@ import android.widget.Toast;
 
 import com.example.asus.student.R;
 
-import StudentDBHelper.StudentDBHelper;
+import StudentDBHelper.StudentDBHepler;
 import Student.Student;
 import TableContanst.TableContanst;
 public class AddStudentActivity extends Activity implements OnClickListener {
@@ -68,7 +63,7 @@ public class AddStudentActivity extends Activity implements OnClickListener {
         box3 = (CheckBox) findViewById(R.id.box3);
         restoreButton = (Button) findViewById(R.id.btn_save);
         resetButton = (Button) findViewById(R.id.btn_clear);
-        dao = new StudentDao(new StudentDBHelper(this)); // 设置监听 78
+        dao = new StudentDao(new StudentDBHepler(this)); // 设置监听 78
         restoreButton.setOnClickListener(this);
         resetButton.setOnClickListener(this);
         dataText.setOnClickListener(this);
