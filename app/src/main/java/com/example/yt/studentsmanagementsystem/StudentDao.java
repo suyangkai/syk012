@@ -32,8 +32,6 @@ public class StudentDao {
         values.put(TableContanst.StudentColumns.MODIFY_TIME, s.getModifyDateTime());
         return dbHelper.getWritableDatabase().insert(TableContanst.STUDENT_TABLE, null, values);
     }
-
-    // 删除一个id所对应的数据库表student的记录
     public int deleteStudentById(long id) {
         return dbHelper.getWritableDatabase().delete(TableContanst.STUDENT_TABLE,
                 TableContanst.StudentColumns.ID + "=?", new String[] { id + "" });
@@ -102,7 +100,8 @@ public class StudentDao {
                 null, null, null,TableContanst.StudentColumns.ID);
         return cursor;    }
     public void closeDB() {
-        dbHelper.close();     }   //自定义的方法通过View和Id得到一个student对象
+        dbHelper.close();     }
+        //自定义的方法通过View和Id得到一个student对象
     public Student getStudentFromView(View view, long id) {
         TextView nameView = (TextView) view.findViewById(R.id.tv_stu_name);
         TextView ageView = (TextView) view.findViewById(R.id.tv_stu_age);

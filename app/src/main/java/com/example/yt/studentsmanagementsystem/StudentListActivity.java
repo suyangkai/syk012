@@ -131,7 +131,7 @@ public class StudentListActivity extends ListActivity implements
 
     // 创建菜单
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-        MenuInflater inflater = new MenuInflater(this); //getMenuInflater();
+        MenuInflater inflater = new MenuInflater(this);
         inflater.inflate(R.menu.menu, menu);
     }
 
@@ -145,11 +145,6 @@ public class StudentListActivity extends ListActivity implements
         Intent intent = new Intent();
         Log.v(TAG, "TestSQLite+++++++id"+student_id);
         switch (item_id) {
-            /* 添加
-            case R.id.add:
-                startActivity(new Intent(this, AddStudentActivity.class));
-                break;*/
-            // 删除
             case R.id.delete:
                 deleteStudentInformation(student_id);
                 break;

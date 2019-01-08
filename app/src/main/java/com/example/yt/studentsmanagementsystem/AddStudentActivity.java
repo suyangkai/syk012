@@ -82,9 +82,7 @@ public class AddStudentActivity extends Activity implements OnClickListener {
             showEditUI(s);
         }
     }
-    //显示学员信息更新的UI104
     private void showEditUI(Student student) {
-        // 先将Student携带的数据还原到student的每一个属性中去
         student_id = student.getId();
         String name = student.getName();
         int age = student.getAge();
@@ -149,7 +147,6 @@ public class AddStudentActivity extends Activity implements OnClickListener {
             showDialog(DATE_PICKER_ID);
         }
     }
-    //       清空界面的数据176
     private void clearUIData() {
         nameText.setText("");
         ageText.setText("");
@@ -159,14 +156,13 @@ public class AddStudentActivity extends Activity implements OnClickListener {
         box2.setChecked(false);
         group.clearCheck();
     }
-    //      收集界面输入的数据，并将封装成Student对象
     private Student getStudentFromUI() {
         String name = nameText.getText().toString();
         int age = Integer.parseInt(ageText.getText().toString());
         String sex = ((RadioButton) findViewById(group
                 .getCheckedRadioButtonId())).getText().toString();
         String likes = "";
-        if (box1.isChecked()) { // basketball, football football
+        if (box1.isChecked()) {
             likes += box1.getText();
         }
         if (box2.isChecked()) {
@@ -202,7 +198,7 @@ public class AddStudentActivity extends Activity implements OnClickListener {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         return format.format(new Date());
     }
-    //验证用户是否按要求输入了数据
+    //验证用户是否输入数据
     private boolean checkUIInput() { // name, age, sex
         String name = nameText.getText().toString();
         String age = ageText.getText().toString();
