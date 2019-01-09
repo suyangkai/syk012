@@ -84,7 +84,6 @@ public class StudentListActivity extends ListActivity implements
 
     }
 
-    // 调用load()方法将数据库中的所有记录显示在当前页面
     @Override
     protected void onStart() {
         super.onStart();
@@ -93,14 +92,11 @@ public class StudentListActivity extends ListActivity implements
     }
 
     public  void onClick(View v) {
-        // 跳转到添加信息的界面
         if (v == addStudent) {
             startActivity(new Intent(StudentListActivity.this, AddStudentActivity.class));
         } else if (v == searchButton) {
-            // 跳转到查询界面
             startActivity(new Intent(this, StudentSearch.class));
         } else if (v == selectButton) {
-            // 跳转到选择界面
             isDeleteList = !isDeleteList;
             if (isDeleteList) {
                 checkOrClearAllCheckboxs(true);
@@ -108,7 +104,6 @@ public class StudentListActivity extends ListActivity implements
                 showOrHiddenCheckBoxs(false);
             }
         } else if (v == deleteButton) {
-            // 删除数据
             if (list.size() > 0) {
                 for (int i = 0; i < list.size(); i++) {
                     long id = list.get(i);
@@ -119,23 +114,18 @@ public class StudentListActivity extends ListActivity implements
                 load();
             }
         } else if (v == canleButton) {
-            // 点击取消，回到初始界面
             load();
             layout.setVisibility(View.GONE);
             isDeleteList = !isDeleteList;
         } else if (v == selectAllButton) {
-            // 全选，如果当前全选按钮显示是全选，则在点击后变为取消全选，如果当前为取消全选，则在点击后变为全选
             selectAllMethods();
         }
     }
 
-    // 创建菜单
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
         MenuInflater inflater = new MenuInflater(this);
         inflater.inflate(R.menu.menu, menu);
     }
-
-    // 对菜单中的按钮添加响应时间
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         int item_id = item.getItemId();
@@ -149,14 +139,12 @@ public class StudentListActivity extends ListActivity implements
                 deleteStudentInformation(student_id);
                 break;
             case R.id.look:
-                // 查看学生信息
                 Log.v(TAG, "TestSQLite+++++++look"+student+"");
                 intent.putExtra("student", student);
                 intent.setClass(this, ShowStudentActivity.class);
                 this.startActivity(intent);
                 break;
             case R.id.write:
-                // 修改学生信息
                 intent.putExtra("student", student);
                 intent.setClass(this, AddStudentActivity.class);
                 this.startActivity(intent);
@@ -176,7 +164,6 @@ public class StudentListActivity extends ListActivity implements
         return false;
     }
 
-    // 点击一条记录是触发的事件
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,
                             long id) {
@@ -195,7 +182,6 @@ public class StudentListActivity extends ListActivity implements
         }
     }
 
-    // 自定义一个加载数据库中的全部记录到当前页面的无参方法
     public void load() {
         StudentDBHepler studentDBHelper = new StudentDBHepler(
                 StudentListActivity.this);
@@ -217,7 +203,6 @@ public class StudentListActivity extends ListActivity implements
         listView.setAdapter(adapter);
     }
 
-    // 全选或者取消全选
     private void checkOrClearAllCheckboxs(boolean b) {
         int childCount = listView.getChildCount();
         Log.e(TAG, "list child size=" + childCount);
@@ -231,7 +216,6 @@ public class StudentListActivity extends ListActivity implements
         showOrHiddenCheckBoxs(true);
     }
 
-    // 显示或者隐藏自定义菜单
     private void showOrHiddenCheckBoxs(boolean b) {
         int childCount = listView.getChildCount();
         Log.e(TAG, "list child size=" + childCount);
@@ -247,10 +231,8 @@ public class StudentListActivity extends ListActivity implements
         }
     }
 
-    // 自定义一个利用对话框形式进行数据的删除
 
     private void deleteStudentInformation(final long delete_id) {
-        // 利用对话框的形式删除数据
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("学员信息删除")
                 .setMessage("确定删除所选记录?")
@@ -278,9 +260,7 @@ public class StudentListActivity extends ListActivity implements
         alert.show();
     }
 
-    // 点击全选事件时所触发的响应
     private void selectAllMethods() {
-        // 全选，如果当前全选按钮显示是全选，则在点击后变为取消全选，如果当前为取消全选，则在点击后变为全选
         if (selectAllButton.getText().toString().equals("全选")) {
             int childCount = listView.getChildCount();
             for (int i = 0; i < childCount; i++) {

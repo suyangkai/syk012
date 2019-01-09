@@ -63,13 +63,12 @@ public class AddStudentActivity extends Activity implements OnClickListener {
         box3 = (CheckBox) findViewById(R.id.box3);
         restoreButton = (Button) findViewById(R.id.btn_save);
         resetButton = (Button) findViewById(R.id.btn_clear);
-        dao = new StudentDao(new StudentDBHepler(this)); // 设置监听 78
+        dao = new StudentDao(new StudentDBHepler(this));
         restoreButton.setOnClickListener(this);
         resetButton.setOnClickListener(this);
         dataText.setOnClickListener(this);
         checkIsAddStudent();
     }
-    // 检查此时Activity是否用于添加学员信息
     private void checkIsAddStudent() {
         Intent intent = getIntent();
         Serializable serial = intent.getSerializableExtra(TableContanst.STUDENT_TABLE);
@@ -106,7 +105,6 @@ public class AddStudentActivity extends Activity implements OnClickListener {
                 box3.setChecked(true);
             }
         }
-        // 还原数据
         idText.setText(student_id + "");
         nameText.setText(name + "");
         ageText.setText(age + "");
@@ -116,7 +114,7 @@ public class AddStudentActivity extends Activity implements OnClickListener {
         restoreButton.setText("更新");
     }
     public void onClick(View v) {
-        // 收集数据
+
         if (v == restoreButton) {
             if (!checkUIInput()) {// 界面输入验证
                 return;
@@ -188,12 +186,10 @@ public class AddStudentActivity extends Activity implements OnClickListener {
         }
         return s;
     }
-    //      * 得到当前的日期时间
     private String getCurrentDateTime() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         return format.format(new Date());
     }
-    //      * 得到当前的日期
     private String getCurrentDate() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         return format.format(new Date());
@@ -220,7 +216,6 @@ public class AddStudentActivity extends Activity implements OnClickListener {
                 invadView.requestFocus();
             return false;
         }         return true;     }
-    //时间的监听与事件
     private DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener()
     {
         @Override
