@@ -37,6 +37,7 @@ public class Student implements Serializable{
         this.phoneNumber = phoneNumber;
         this.trainDate = trainDate;
         this.modifyDateTime = modifyDateTime;
+
     }
     public long getId() {
         return id;
